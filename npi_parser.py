@@ -80,9 +80,8 @@ def upload_npi_data(npi_collection_rest_url):
 
 
 if __name__ == '__main__':
-    start_time = time.time()
-    upload_npi_data('http://62.216.33.167:21005/api/npi_data')
-    work_time = int(time.time() - start_time)
-    print(work_time)
-    print(14400 - work_time)
-    time.sleep(14400 - work_time)
+    while True:
+        start_time = time.time()
+        upload_npi_data('http://62.216.33.167:21005/api/npi_data')
+        work_time = int(time.time() - start_time)
+        time.sleep(abs(work_time % 14400 - 14400))
